@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="RAG chatbot illustration">
+  <defs>
+    <linearGradient id="rag-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e24"/>
+      <stop offset="100%" style="stop-color:#2a2a32"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#rag-bg)"/>
+
+  <g transform="translate(400 225)" fill="none" stroke="#ff8c42" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Knowledge document (retrieval source) -->
+    <g stroke-width="2.4" stroke-opacity="0.92">
+      <rect x="-188" y="-78" width="108" height="156" rx="8" fill="#25252d" stroke-opacity="0.95"/>
+      <g stroke-width="2" stroke-opacity="0.5">
+        <line x1="-172" y1="-52" x2="-118" y2="-52"/>
+        <line x1="-172" y1="-32" x2="-130" y2="-32"/>
+        <line x1="-172" y1="-12" x2="-124" y2="-12"/>
+        <line x1="-172" y1="8" x2="-136" y2="8"/>
+        <line x1="-172" y1="28" x2="-120" y2="28"/>
+      </g>
+    </g>
+    <!-- Retrieval path + embedding nodes -->
+    <g stroke-width="2.2" stroke-opacity="0.65">
+      <line x1="-72" y1="-15" x2="-28" y2="-15"/>
+      <line x1="-72" y1="15" x2="-28" y2="15"/>
+      <circle cx="-8" cy="-15" r="5" fill="#ff8c42" fill-opacity="0.2" stroke-opacity="0.85"/>
+      <circle cx="8" cy="0" r="5" fill="#ff8c42" fill-opacity="0.2" stroke-opacity="0.85"/>
+      <circle cx="-8" cy="15" r="5" fill="#ff8c42" fill-opacity="0.2" stroke-opacity="0.85"/>
+      <line x1="-14" y1="-12" x2="2" y2="-3"/>
+      <line x1="-14" y1="12" x2="2" y2="3"/>
+      <line x1="12" y1="0" x2="28" y2="0"/>
+    </g>
+    <!-- Chat bubble (generation) -->
+    <g stroke-width="2.6" stroke-opacity="0.95">
+      <path
+        d="M 48 -62 L 178 -62 Q 192 -62 192 -48 L 192 38 Q 192 52 178 52 L 88 52 L 62 78 L 70 52 L 48 52 Q 34 52 34 38 L 34 -48 Q 34 -62 48 -62 Z"
+        fill="#25252d"
+        fill-opacity="0.95"
+      />
+      <g stroke-width="2.3" stroke-opacity="0.55" stroke-linecap="round">
+        <line x1="58" y1="-28" x2="168" y2="-28"/>
+        <line x1="58" y1="-6" x2="148" y2="-6"/>
+        <line x1="58" y1="16" x2="132" y2="16"/>
+      </g>
+    </g>
+  </g>
+</svg>

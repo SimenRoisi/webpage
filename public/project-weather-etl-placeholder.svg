@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="Weather ETL pipeline illustration">
+  <defs>
+    <linearGradient id="wx-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e24"/>
+      <stop offset="100%" style="stop-color:#2a2a32"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#wx-bg)"/>
+
+  <g transform="translate(400 228)" fill="none" stroke="#ff8c42" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Weather / sources -->
+    <g stroke-width="2.4" stroke-opacity="0.9">
+      <path
+        d="M -168 -108 C -188 -118 -198 -98 -182 -88 C -192 -72 -172 -58 -152 -68 C -138 -52 -108 -58 -108 -82 C -88 -88 -78 -108 -98 -118 C -118 -128 -152 -122 -168 -108 Z"
+        fill="#25252d"
+        fill-opacity="0.85"
+      />
+      <path d="M 108 -98 L 128 -118 M 118 -108 L 138 -88 M 98 -88 L 118 -68" stroke-width="2.2" stroke-opacity="0.65"/>
+      <circle cx="128" cy="-108" r="22" stroke-width="2.2" stroke-opacity="0.55" fill="none"/>
+    </g>
+    <!-- Source feeds -->
+    <g stroke-width="2.2" stroke-opacity="0.7">
+      <line x1="-130" y1="-35" x2="-75" y2="-5"/>
+      <line x1="130" y1="-35" x2="75" y2="-5"/>
+      <polygon points="-75,-5 -65,8 -85,8" fill="#ff8c42" fill-opacity="0.25" stroke="none" stroke-width="0"/>
+      <polygon points="75,-5 85,8 65,8" fill="#ff8c42" fill-opacity="0.25" stroke="none" stroke-width="0"/>
+    </g>
+    <!-- Transform (normalize / merge) -->
+    <g stroke-width="2.6" stroke-opacity="0.95">
+      <path
+        d="M -52 -18 L 52 -18 L 38 18 L -38 18 Z"
+        fill="#25252d"
+        fill-opacity="0.95"
+      />
+      <g stroke-width="2" stroke-opacity="0.5">
+        <line x1="-22" y1="-2" x2="22" y2="-2"/>
+        <line x1="-16" y1="8" x2="16" y2="8"/>
+      </g>
+    </g>
+    <line x1="0" y1="18" x2="0" y2="48" stroke-width="2.2" stroke-opacity="0.6"/>
+    <polygon points="0,62 -8,48 8,48" fill="#ff8c42" fill-opacity="0.3" stroke="none" stroke-width="0"/>
+    <!-- Load: database cylinder -->
+    <g stroke-width="2.5" stroke-opacity="0.92">
+      <ellipse cx="0" cy="76" rx="52" ry="13" fill="#25252d" fill-opacity="0.92"/>
+      <path
+        d="M -52 76 V 108 A 52 13 0 0 0 52 108 V 76"
+        fill="#25252d"
+        fill-opacity="0.88"
+      />
+      <path d="M -52 76 V 108 M 52 76 V 108" stroke-opacity="0.35"/>
+      <ellipse cx="0" cy="108" rx="52" ry="13" fill="none"/>
+      <line x1="-52" y1="92" x2="52" y2="92" stroke-opacity="0.4"/>
+    </g>
+  </g>
+</svg>

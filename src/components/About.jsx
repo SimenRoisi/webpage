@@ -1,14 +1,39 @@
+import { Fragment } from 'react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 
+const workLinkClassName =
+  'text-dimmed-text hover:text-warm-orange underline underline-offset-2 transition-colors';
+
+function paragraphWithWorkLinks(paragraph, links) {
+  if (!links?.length) return paragraph;
+  const [{ label, href }] = links;
+  const parts = paragraph.split(label);
+  if (parts.length === 1) return paragraph;
+  return (
+    <>
+      {parts.map((part, i) => (
+        <Fragment key={i}>
+          {part}
+          {i < parts.length - 1 && (
+            <a href={href} target="_blank" rel="noreferrer" className={workLinkClassName}>
+              {label}
+            </a>
+          )}
+        </Fragment>
+      ))}
+    </>
+  );
+}
+
 /**
  * About Section Component
- * Displays the profile picture, about text, work/interests description,
+ * Displays the profile picture, about text, work description,
  * and side-by-side education logos.
  */
 export default function About() {
   const { about, pictureUrl } = portfolioData.profile;
-  const { work, interests, education } = portfolioData.experience;
+  const { work, workLinks, education } = portfolioData.experience;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -51,11 +76,16 @@ export default function About() {
           </motion.div>
         </div>
 
-        {/* Middle Block: Work & Interests */}
+        {/* Middle Block: Work */}
         <motion.div variants={itemVariants}>
           <div className="text-lg leading-relaxed text-dimmed-text space-y-6">
-            <p>{work}</p>
-            <p>{interests}</p>
+            {work
+              .split(/\n\n+/)
+              .map((paragraph) => paragraph.trim())
+              .filter(Boolean)
+              .map((paragraph, i) => (
+                <p key={i}>{paragraphWithWorkLinks(paragraph, workLinks)}</p>
+              ))}
           </div>
         </motion.div>
 

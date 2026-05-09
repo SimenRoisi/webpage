@@ -23,7 +23,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="min-h-screen relative z-main px-4 py-20 bg-stellar-grey">
+    <section id="projects" className="min-h-screen relative z-main px-4 py-20 bg-stellar-grey overflow-visible">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,7 +35,7 @@ export default function Projects() {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch overflow-visible"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
@@ -45,26 +45,54 @@ export default function Projects() {
             <motion.div 
               key={project.id} 
               variants={itemVariants}
-              className="bg-stellar-grey/80 border border-warm-orange/30 p-6 rounded-xl hover:border-warm-orange transition-colors duration-300"
+              whileHover={
+                project.hoverExpand
+                  ? { scale: 1.02, zIndex: 20 }
+                  : { zIndex: 20 }
+              }
+              transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+              className="group relative flex h-full min-h-0 w-full flex-col overflow-visible bg-stellar-grey/80 border border-warm-orange/30 p-6 rounded-xl origin-top shadow-lg shadow-black/20 transition-[border-color,box-shadow] duration-300 hover:border-warm-orange hover:shadow-xl hover:shadow-black/30"
             >
-              <h3 className="text-2xl mb-3">{project.title}</h3>
-              <p className="mb-6 text-dimmed-text line-clamp-3">{project.description}</p>
-              
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map(tag => (
-                  <span key={tag} className="text-xs bg-warm-orange/10 text-warm-orange px-2 py-1 rounded">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              {project.imageUrl ? (
+                <div className="aspect-video rounded-lg overflow-hidden mb-4 border border-warm-orange/20 bg-stellar-grey shrink-0">
+                  <img
+                    src={project.imageUrl}
+                    alt={`${project.title} — placeholder preview`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : null}
+              <h3 className="text-2xl mb-3 shrink-0">{project.title}</h3>
+              <p
+                className={
+                  'shrink-0 text-dimmed-text text-sm leading-relaxed ' +
+                  'line-clamp-3 group-hover:line-clamp-none ' +
+                  'group-hover:text-[0.8125rem] group-hover:leading-snug ' +
+                  'transition-[font-size,line-height] duration-300 ease-out'
+                }
+              >
+                {project.description}
+              </p>
 
-              <div className="flex gap-4">
-                <a href={project.githubUrl} target="_blank" rel="noreferrer" className="text-dimmed-text hover:text-warm-orange transition-colors flex items-center gap-2">
-                  <Code size={18} /> Code
-                </a>
-                <a href={project.demoUrl} target="_blank" rel="noreferrer" className="text-dimmed-text hover:text-warm-orange transition-colors flex items-center gap-2">
-                  <ExternalLink size={18} /> Demo
-                </a>
+              <div className="mt-auto shrink-0 pt-6">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map(tag => (
+                    <span key={tag} className="text-xs bg-warm-orange/10 text-warm-orange px-2 py-1 rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-4">
+                  <a href={project.githubUrl} target="_blank" rel="noreferrer" className="text-dimmed-text hover:text-warm-orange transition-colors flex items-center gap-2">
+                    <Code size={18} /> Code
+                  </a>
+                  {project.demoUrl && project.demoUrl !== '#' ? (
+                    <a href={project.demoUrl} target="_blank" rel="noreferrer" className="text-dimmed-text hover:text-warm-orange transition-colors flex items-center gap-2">
+                      <ExternalLink size={18} /> Demo
+                    </a>
+                  ) : null}
+                </div>
               </div>
             </motion.div>
           ))}
