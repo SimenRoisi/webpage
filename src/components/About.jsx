@@ -50,21 +50,22 @@ export default function About() {
 
   return (
     <section id="about" className="min-h-screen flex items-center justify-center relative z-main px-4 py-20 bg-stellar-grey">
-      <motion.div 
+      <motion.div
         className="max-w-4xl mx-auto flex flex-col gap-16"
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-100px" }}
       >
-        
+
         {/* Top Block: Profile Picture and About Text */}
         <div className="flex flex-col md:flex-row items-center md:items-start gap-12">
           <motion.div variants={itemVariants} className="flex-shrink-0">
-            <img 
-              src={pictureUrl} 
-              alt="Profile" 
-              className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-2xl"
+            <img
+              src={pictureUrl}
+              alt="Profile"
+              className="w-52 h-52 md:w-64 md:h-64 object-cover rounded-full shadow-2xl"
+              style={{ objectPosition: "center -0.1cm" }}
             />
           </motion.div>
 
@@ -90,24 +91,24 @@ export default function About() {
         </motion.div>
 
         {/* Bottom Block: Education Logos Side by Side */}
-        <motion.div 
-          variants={itemVariants} 
+        <motion.div
+          variants={itemVariants}
           className="flex flex-col sm:flex-row items-center justify-center gap-12 sm:gap-24"
         >
           {education.map((edu, index) => (
             <div key={index} className="flex items-center gap-4 group flex-1">
-              <img 
-                src={edu.logo} 
-                alt={`${edu.institution} logo`} 
+              <img
+                src={edu.logo}
+                alt={`${edu.institution} logo`}
                 className={
-                  "w-16 h-16 md:w-12 md:h-12 shrink-0 object-contain " + 
+                  "w-16 h-16 md:w-12 md:h-12 shrink-0 object-contain " +
                   "group-hover:scale-110 transition-transform duration-300"
                 }
               />
-              
+
               {/* Skinny orange dividing line */}
               <div className="w-[2px] h-12 bg-warm-orange/60 shrink-0"></div>
-              
+
               <div className="flex flex-col">
                 <span className="text-base md:text-lg font-bold text-dimmed-text group-hover:text-warm-orange transition-colors">
                   {edu.institution}
